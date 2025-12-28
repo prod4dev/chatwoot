@@ -51,8 +51,8 @@ gem 'csv-safe'
 gem 'aws-sdk-s3', require: false
 # original gem isn't maintained actively
 # we wanted updated version of faraday which is a dependency for slack-ruby-client
-gem 'azure-storage-blob', git: 'https://github.com/chatwoot/azure-storage-ruby', branch: 'chatwoot', require: false
-gem 'google-cloud-storage', '>= 1.48.0', require: false
+# gem 'azure-storage-blob', git: 'https://github.com/chatwoot/azure-storage-ruby', branch: 'chatwoot', require: false  # Not using Azure
+# gem 'google-cloud-storage', '>= 1.48.0', require: false  # Not using GCS
 gem 'image_processing'
 
 ##-- for actionmailbox --##
@@ -66,9 +66,9 @@ gem 'redis-namespace'
 # super fast record imports in bulk
 gem 'activerecord-import'
 
-gem 'searchkick'
-gem 'opensearch-ruby'
-gem 'faraday_middleware-aws-sigv4'
+# gem 'searchkick'  # Not using advanced search
+# gem 'opensearch-ruby'  # Not using advanced search
+# gem 'faraday_middleware-aws-sigv4'  # Needed by opensearch
 
 ##--- gems for server & infra configuration ---##
 gem 'dotenv-rails', '>= 3.0.0'
@@ -98,35 +98,35 @@ gem 'administrate-field-belongs_to_search', '>= 0.9.0'
 gem 'wisper', '2.0.0'
 
 ##--- gems for channels ---##
-gem 'facebook-messenger'
-gem 'line-bot-api'
-gem 'twilio-ruby'
+# gem 'facebook-messenger'  # Not using Facebook
+# gem 'line-bot-api'  # Not using Line
+gem 'twilio-ruby'  # For WhatsApp
 # twitty will handle subscription of twitter account events
 # gem 'twitty', git: 'https://github.com/chatwoot/twitty'
-gem 'twitty', '~> 0.1.5'
+# gem 'twitty', '~> 0.1.5'  # Not using Twitter
 # facebook client
-gem 'koala'
+# gem 'koala'  # Not using Facebook
 # slack client
-gem 'slack-ruby-client', '~> 2.7.0'
+# gem 'slack-ruby-client', '~> 2.7.0'  # Not using Slack
 # for dialogflow integrations
-gem 'google-cloud-dialogflow-v2', '>= 0.24.0'
-gem 'grpc'
+# gem 'google-cloud-dialogflow-v2', '>= 0.24.0'  # Not using Dialogflow
+# gem 'grpc'  # Needed by Dialogflow
 # Translate integrations
 # 'google-cloud-translate' gem depends on faraday 2.0 version
 # this dependency breaks the slack-ruby-client gem
-gem 'google-cloud-translate-v3', '>= 0.7.0'
+# gem 'google-cloud-translate-v3', '>= 0.7.0'  # Not using Google Translate
 
 ##-- apm and error monitoring ---#
 # loaded only when environment variables are set.
 # ref application.rb
-gem 'datadog', '~> 2.0', require: false
-gem 'elastic-apm', require: false
-gem 'newrelic_rpm', require: false
-gem 'newrelic-sidekiq-metrics', '>= 1.6.2', require: false
-gem 'scout_apm', require: false
-gem 'sentry-rails', '>= 5.19.0', require: false
-gem 'sentry-ruby', require: false
-gem 'sentry-sidekiq', '>= 5.19.0', require: false
+# gem 'datadog', '~> 2.0', require: false  # Not using monitoring yet
+# gem 'elastic-apm', require: false  # Not using monitoring yet
+# gem 'newrelic_rpm', require: false  # Not using monitoring yet
+# gem 'newrelic-sidekiq-metrics', '>= 1.6.2', require: false  # Not using monitoring yet
+# gem 'scout_apm', require: false  # Not using monitoring yet
+# gem 'sentry-rails', '>= 5.19.0', require: false  # Not using monitoring yet
+# gem 'sentry-ruby', require: false  # Not using monitoring yet
+# gem 'sentry-sidekiq', '>= 5.19.0', require: false  # Not using monitoring yet
 
 ##-- background job processing --##
 gem 'sidekiq', '>= 7.3.1'
@@ -141,9 +141,9 @@ gem 'web-push', '>= 3.0.1'
 
 ##-- geocoding / parse location from ip --##
 # http://www.rubygeocoder.com/
-gem 'geocoder'
+# gem 'geocoder'  # Not using geolocation
 # to parse maxmind db
-gem 'maxminddb'
+# gem 'maxminddb'  # Not using geolocation
 
 # to create db triggers
 gem 'hairtrigger'
@@ -162,7 +162,7 @@ gem 'working_hours'
 gem 'pg_search'
 
 # Subscriptions, Billing
-gem 'stripe', '~> 18.0'
+# gem 'stripe', '~> 18.0'  # Not using billing/subscriptions
 
 ## - helper gems --##
 ## to populate db with sample data
@@ -184,24 +184,24 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.2'
 
 ## Gems for reponse bot
 # adds cosine similarity to postgres using vector extension
-gem 'neighbor'
-gem 'pgvector'
+# gem 'neighbor'  # Not using AI features
+# gem 'pgvector'  # Not using AI features
 # Convert Website HTML to Markdown
-gem 'reverse_markdown'
+# gem 'reverse_markdown'  # Not using AI features
 
 gem 'iso-639'
-gem 'ruby-openai'
-gem 'ai-agents', '>= 0.7.0'
+# gem 'ruby-openai'  # Not using AI features
+# gem 'ai-agents', '>= 0.7.0'  # Not using AI features
 
 # TODO: Move this gem as a dependency of ai-agents
-gem 'ruby_llm', '>= 1.8.2'
-gem 'ruby_llm-schema'
+# gem 'ruby_llm', '>= 1.8.2'  # Not using AI features
+# gem 'ruby_llm-schema'  # Not using AI features
 
 # OpenTelemetry for LLM observability
-gem 'opentelemetry-sdk'
-gem 'opentelemetry-exporter-otlp'
+# gem 'opentelemetry-sdk'  # Not using AI features
+# gem 'opentelemetry-exporter-otlp'  # Not using AI features
 
-gem 'shopify_api'
+# gem 'shopify_api'  # Not using Shopify integration
 
 ### Gems required only in specific deployment environments ###
 ##############################################################
