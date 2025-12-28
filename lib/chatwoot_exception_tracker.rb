@@ -19,6 +19,8 @@ class ChatwootExceptionTracker
   private
 
   def capture_exception_with_sentry
+    return unless defined?(Sentry)
+
     Sentry.with_scope do |scope|
       if @account.present?
         scope.set_context('account', { id: @account.id, name: @account.name })

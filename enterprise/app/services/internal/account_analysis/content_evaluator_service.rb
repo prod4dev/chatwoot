@@ -1,21 +1,22 @@
-class Internal::AccountAnalysis::ContentEvaluatorService
-  include Integrations::LlmInstrumentation
+if defined?(RubyLLM)
+  class Internal::AccountAnalysis::ContentEvaluatorService
+    include Integrations::LlmInstrumentation
 
-  def initialize
-    Llm::Config.initialize!
-  end
-
-  def evaluate(content)
-    return default_evaluation if content.blank?
-
-    moderation_result = instrument_moderation_call(instrumentation_params(content)) do
-      RubyLLM.moderate(content.to_s[0...10_000])
+    def initialize
+      Llm::Config.initialize!
     end
 
-    build_evaluation(moderation_result)
-  rescue StandardError => e
-    handle_evaluation_error(e)
-  end
+    def evaluate(content)
+      return default_evaluation if content.blank?
+
+      moderation_result = instrument_moderation_call(instrumentation_params(content)) do
+        RubyLLM.moderate(content.to_s[0...10_000])
+      end
+
+      build_evaluation(moderation_result)
+    rescue StandardError => e
+      handle_evaluation_error(e)
+    end
 
   private
 
@@ -73,5 +74,10 @@ class Internal::AccountAnalysis::ContentEvaluatorService
   def handle_evaluation_error(error)
     Rails.logger.error("Error evaluating content: #{error.message}")
     default_evaluation('evaluation_failure')
+  end
+  end
+else
+  # Stub class when RubyLLM is not available
+  class Internal::AccountAnalysis::ContentEvaluatorService
   end
 end
