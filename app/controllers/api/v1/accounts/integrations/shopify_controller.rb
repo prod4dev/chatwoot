@@ -1,5 +1,7 @@
-class Api::V1::Accounts::Integrations::ShopifyController < Api::V1::Accounts::BaseController
-  include Shopify::IntegrationHelper
+# Only define if ShopifyAPI gem is available
+if defined?(ShopifyAPI)
+  class Api::V1::Accounts::Integrations::ShopifyController < Api::V1::Accounts::BaseController
+    include Shopify::IntegrationHelper
   before_action :setup_shopify_context, only: [:orders]
   before_action :fetch_hook, except: [:auth]
   before_action :validate_contact, only: [:orders]
@@ -107,5 +109,6 @@ class Api::V1::Accounts::Integrations::ShopifyController < Api::V1::Accounts::Ba
 
     render json: { error: 'Contact information missing' },
            status: :unprocessable_entity
+  end
   end
 end

@@ -1,5 +1,7 @@
-class Shopify::CallbacksController < ApplicationController
-  include Shopify::IntegrationHelper
+# Only define if Shopify helper is available (Shopify integration enabled)
+if defined?(Shopify::IntegrationHelper)
+  class Shopify::CallbacksController < ApplicationController
+    include Shopify::IntegrationHelper
 
   def show
     verify_account!
@@ -68,5 +70,6 @@ class Shopify::CallbacksController < ApplicationController
     return shopify_integration_url if account
 
     ENV.fetch('FRONTEND_URL', nil)
+  end
   end
 end

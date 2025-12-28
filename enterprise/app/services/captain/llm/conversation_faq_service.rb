@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 class Captain::Llm::ConversationFaqService < Llm::BaseAiService
   include Integrations::LlmInstrumentation
   DISTANCE_THRESHOLD = 0.3
@@ -123,4 +125,5 @@ class Captain::Llm::ConversationFaqService < Llm::BaseAiService
     Rails.logger.error "Error in parsing GPT processed response: #{e.message}"
     []
   end
+end
 end

@@ -1,6 +1,12 @@
-require 'agents'
+begin
+  require 'agents'
+rescue LoadError
+  # AI agents gem not available
+end
 
-class Captain::Tools::HttpTool < Agents::Tool
+# Only define if Agents gem is available (AI features enabled)
+if defined?(Agents)
+  class Captain::Tools::HttpTool < Agents::Tool
   def initialize(assistant, custom_tool)
     @assistant = assistant
     @custom_tool = custom_tool
@@ -108,5 +114,6 @@ class Captain::Tools::HttpTool < Agents::Tool
     state = tool_context&.state || {}
     metadata_headers = @custom_tool.build_metadata_headers(state)
     metadata_headers.each { |key, value| request[key] = value }
+  end
   end
 end

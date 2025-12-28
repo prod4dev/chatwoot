@@ -1,6 +1,12 @@
-require 'agents'
+begin
+  require 'agents'
+rescue LoadError
+  # AI agents gem not available
+end
 
-class Captain::Tools::BasePublicTool < Agents::Tool
+# Only define if Agents gem is available (AI features enabled)
+if defined?(Agents)
+  class Captain::Tools::BasePublicTool < Agents::Tool
   def initialize(assistant)
     @assistant = assistant
     super()
@@ -41,5 +47,6 @@ class Captain::Tools::BasePublicTool < Agents::Tool
     Rails.logger.info do
       "#{self.class.name}: #{action} for assistant #{@assistant&.id} - #{details.inspect}"
     end
+  end
   end
 end

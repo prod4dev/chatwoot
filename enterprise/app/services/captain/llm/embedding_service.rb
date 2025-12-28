@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 class Captain::Llm::EmbeddingService
   include Integrations::LlmInstrumentation
 
@@ -35,4 +37,5 @@ class Captain::Llm::EmbeddingService
       account_id: @account_id
     }
   end
+end
 end

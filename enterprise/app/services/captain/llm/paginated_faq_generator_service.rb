@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 class Captain::Llm::PaginatedFaqGeneratorService < Llm::LegacyBaseOpenAiService
   include Integrations::LlmInstrumentation
 
@@ -222,4 +224,5 @@ class Captain::Llm::PaginatedFaqGeneratorService < Llm::LegacyBaseOpenAiService
       }
     }
   end
+end
 end

@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 class Captain::Llm::ContactAttributesService < Llm::BaseAiService
   include Integrations::LlmInstrumentation
   def initialize(assistant, conversation)
@@ -57,4 +59,5 @@ class Captain::Llm::ContactAttributesService < Llm::BaseAiService
     Rails.logger.error "Error in parsing GPT processed response: #{e.message}"
     []
   end
+end
 end

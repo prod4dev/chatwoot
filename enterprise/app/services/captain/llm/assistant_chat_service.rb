@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 class Captain::Llm::AssistantChatService < Llm::BaseAiService
   include Captain::ChatHelper
 
@@ -45,4 +47,5 @@ class Captain::Llm::AssistantChatService < Llm::BaseAiService
   def feature_name
     'assistant'
   end
+end
 end

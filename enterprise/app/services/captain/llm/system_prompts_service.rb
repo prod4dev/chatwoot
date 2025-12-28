@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 # rubocop:disable Metrics/ClassLength
 class Captain::Llm::SystemPromptsService
   class << self
@@ -291,3 +293,4 @@ class Captain::Llm::SystemPromptsService
   end
 end
 # rubocop:enable Metrics/ClassLength
+end

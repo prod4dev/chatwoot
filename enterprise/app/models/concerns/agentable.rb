@@ -2,6 +2,8 @@ module Concerns::Agentable
   extend ActiveSupport::Concern
 
   def agent
+    return nil unless defined?(Agents)
+
     Agents::Agent.new(
       name: agent_name,
       instructions: ->(context) { agent_instructions(context) },

@@ -1,3 +1,5 @@
+# Only define if RubyLLM gem is available
+if defined?(RubyLLM)
 class Captain::Llm::PdfProcessingService < Llm::LegacyBaseOpenAiService
   include Integrations::LlmInstrumentation
 
@@ -60,4 +62,5 @@ class Captain::Llm::PdfProcessingService < Llm::LegacyBaseOpenAiService
       yield temp_file
     end
   end
+end
 end
