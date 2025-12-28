@@ -60,4 +60,8 @@ class Captain::Llm::ContactAttributesService < Llm::BaseAiService
     []
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::ContactAttributesService
+  end
 end

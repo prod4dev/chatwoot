@@ -1,4 +1,3 @@
-# Only define if RubyLLM is available (AI features enabled)
 if defined?(RubyLLM)
   class Captain::Tools::BaseTool < RubyLLM::Tool
     attr_accessor :assistant
@@ -25,5 +24,9 @@ if defined?(RubyLLM)
 
       account_user.administrator? || account_user.agent?
     end
+  end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Tools::BaseTool
   end
 end

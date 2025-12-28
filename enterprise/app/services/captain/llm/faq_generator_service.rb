@@ -55,4 +55,8 @@ class Captain::Llm::FaqGeneratorService < Llm::BaseAiService
     []
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::FaqGeneratorService
+  end
 end

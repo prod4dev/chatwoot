@@ -111,4 +111,8 @@ if defined?(ShopifyAPI)
            status: :unprocessable_entity
   end
   end
+else
+  # Stub class when ShopifyAPI gem is not available
+  class Api::V1::Accounts::Integrations::ShopifyController < Api::V1::Accounts::BaseController
+  end
 end

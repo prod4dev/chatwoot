@@ -126,4 +126,8 @@ class Captain::Llm::ConversationFaqService < Llm::BaseAiService
     []
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::ConversationFaqService
+  end
 end

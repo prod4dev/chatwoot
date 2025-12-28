@@ -225,4 +225,8 @@ class Captain::Llm::PaginatedFaqGeneratorService < Llm::LegacyBaseOpenAiService
     }
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::PaginatedFaqGeneratorService
+  end
 end

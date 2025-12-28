@@ -4,7 +4,6 @@ rescue LoadError
   # AI agents gem not available
 end
 
-# Only define if Agents gem is available (AI features enabled)
 if defined?(Agents)
   class Captain::Tools::BasePublicTool < Agents::Tool
   def initialize(assistant)
@@ -48,5 +47,9 @@ if defined?(Agents)
       "#{self.class.name}: #{action} for assistant #{@assistant&.id} - #{details.inspect}"
     end
   end
+  end
+else
+  # Stub class when Agents gem is not available
+  class Captain::Tools::BasePublicTool
   end
 end

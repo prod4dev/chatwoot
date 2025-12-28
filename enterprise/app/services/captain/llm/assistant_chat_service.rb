@@ -48,4 +48,8 @@ class Captain::Llm::AssistantChatService < Llm::BaseAiService
     'assistant'
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::AssistantChatService
+  end
 end

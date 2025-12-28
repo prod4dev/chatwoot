@@ -293,4 +293,8 @@ class Captain::Llm::SystemPromptsService
   end
 end
 # rubocop:enable Metrics/ClassLength
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::SystemPromptsService
+  end
 end

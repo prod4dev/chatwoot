@@ -63,4 +63,8 @@ class Captain::Llm::PdfProcessingService < Llm::LegacyBaseOpenAiService
     end
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::PdfProcessingService
+  end
 end

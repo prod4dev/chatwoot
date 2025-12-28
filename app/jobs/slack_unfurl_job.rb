@@ -49,4 +49,8 @@ if defined?(Slack)
       false
     end
   end
+else
+  # Stub class when Slack gem is not available
+  class SlackUnfurlJob < ApplicationJob
+  end
 end

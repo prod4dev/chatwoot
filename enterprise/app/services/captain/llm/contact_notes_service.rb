@@ -62,4 +62,8 @@ class Captain::Llm::ContactNotesService < Llm::BaseAiService
     []
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::ContactNotesService
+  end
 end

@@ -72,4 +72,8 @@ if defined?(Shopify::IntegrationHelper)
     ENV.fetch('FRONTEND_URL', nil)
   end
   end
+else
+  # Stub class when Shopify helper is not available
+  class Shopify::CallbacksController < ApplicationController
+  end
 end

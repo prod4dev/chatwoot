@@ -38,4 +38,8 @@ class Captain::Llm::EmbeddingService
     }
   end
 end
+else
+  # Stub class when RubyLLM is not available
+  class Captain::Llm::EmbeddingService
+  end
 end
