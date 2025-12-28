@@ -1,4 +1,9 @@
-require 'google/cloud/translate/v3'
+begin
+  require 'google/cloud/translate/v3'
+rescue LoadError
+  # Google Translate gem not available
+end
+
 class Integrations::GoogleTranslate::DetectLanguageService
   pattr_initialize [:hook!, :message!]
 

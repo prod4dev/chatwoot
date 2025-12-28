@@ -1,4 +1,8 @@
-require 'google/cloud/dialogflow/v2'
+begin
+  require 'google/cloud/dialogflow/v2'
+rescue LoadError
+  # Dialogflow gem not available
+end
 
 class Integrations::Dialogflow::ProcessorService < Integrations::BotProcessorService
   pattr_initialize [:event_name!, :hook!, :event_data!]

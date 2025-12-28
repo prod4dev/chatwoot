@@ -1,10 +1,17 @@
-require 'opentelemetry/sdk'
-require 'opentelemetry/exporter/otlp'
+# OpenTelemetry gems disabled - gems removed from Gemfile
+begin
+  require 'opentelemetry/sdk'
+  require 'opentelemetry/exporter/otlp'
+rescue LoadError
+  # Gems not available, OpenTelemetry disabled
+end
 require 'base64'
 
 module OpentelemetryConfig
   class << self
     def tracer
+      return nil unless opentelemetry_available?
+
       initialize! unless initialized?
       OpenTelemetry.tracer_provider.tracer('chatwoot')
     end
@@ -13,8 +20,13 @@ module OpentelemetryConfig
       @initialized ||= false
     end
 
+    def opentelemetry_available?
+      defined?(OpenTelemetry)
+    end
+
     def initialize!
       return if @initialized
+      return mark_initialized unless opentelemetry_available?
       return mark_initialized unless langfuse_provider?
       return mark_initialized unless langfuse_credentials_present?
 

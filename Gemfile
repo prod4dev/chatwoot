@@ -248,7 +248,7 @@ group :development, :test do
   ##--- gems for debugging and error reporting ---##
   # static analysis
   gem 'brakeman'
-  gem 'bundle-audit', require: false
+  # gem 'bundle-audit', require: false  # Incompatible with Bundler 4.x
   gem 'byebug', platform: :mri
   gem 'climate_control'
   gem 'debug', '~> 1.8'

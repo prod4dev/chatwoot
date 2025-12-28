@@ -6,6 +6,8 @@ module Integrations::LlmInstrumentationSpans
   include Integrations::LlmInstrumentationConstants
 
   def tracer
+    return nil unless OpentelemetryConfig.opentelemetry_available?
+
     @tracer ||= OpentelemetryConfig.tracer
   end
 

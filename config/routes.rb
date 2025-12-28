@@ -536,10 +536,10 @@ Rails.application.routes.draw do
 
   # ----------------------------------------------------------------------
   # Routes for channel integrations
-  mount Facebook::Messenger::Server, at: 'bot'
-  get 'webhooks/twitter', to: 'api/v1/webhooks#twitter_crc'
-  post 'webhooks/twitter', to: 'api/v1/webhooks#twitter_events'
-  post 'webhooks/line/:line_channel_id', to: 'webhooks/line#process_payload'
+  # mount Facebook::Messenger::Server, at: 'bot'  # Facebook disabled
+  # get 'webhooks/twitter', to: 'api/v1/webhooks#twitter_crc'  # Twitter disabled
+  # post 'webhooks/twitter', to: 'api/v1/webhooks#twitter_events'  # Twitter disabled
+  # post 'webhooks/line/:line_channel_id', to: 'webhooks/line#process_payload'  # Line disabled
   post 'webhooks/telegram/:bot_token', to: 'webhooks/telegram#process_payload'
   post 'webhooks/sms/:phone_number', to: 'webhooks/sms#process_payload'
   get 'webhooks/whatsapp/:phone_number', to: 'webhooks/whatsapp#verify'
