@@ -97,7 +97,11 @@ export default {
     },
     setSavedFilter() {
       const { inbox_filter_by: filterBy = {} } = this.uiSettings;
-      const { status, type, sort_by: sortBy } = filterBy;
+      const {
+        status = wootConstants.INBOX_DISPLAY_BY.SNOOZED,
+        type = wootConstants.INBOX_DISPLAY_BY.READ,
+        sort_by: sortBy
+      } = filterBy;
       this.activeSort = sortBy || wootConstants.INBOX_SORT_BY.NEWEST;
       this.displayOptions.forEach(option => {
         option.selected =
