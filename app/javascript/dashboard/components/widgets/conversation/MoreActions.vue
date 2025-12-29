@@ -9,6 +9,7 @@ import EmailTranscriptModal from './EmailTranscriptModal.vue';
 import ResolveAction from '../../buttons/ResolveAction.vue';
 import ButtonV4 from 'dashboard/components-next/button/Button.vue';
 import DropdownMenu from 'dashboard/components-next/dropdown-menu/DropdownMenu.vue';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 import {
   CMD_MUTE_CONVERSATION,
@@ -23,6 +24,7 @@ const { t } = useI18n();
 const [showEmailActionsModal, toggleEmailModal] = useToggle(false);
 const [showActionsDropdown, toggleDropdown] = useToggle(false);
 
+const { showAdvancedFeatures } = useAdvancedFeatures();
 const currentChat = computed(() => store.getters.getSelectedChat);
 
 const actionMenuItems = computed(() => {
@@ -97,6 +99,7 @@ onUnmounted(() => {
       :status="currentChat.status"
     />
     <div
+      v-if="showAdvancedFeatures"
       v-on-clickaway="() => toggleDropdown(false)"
       class="relative flex items-center group"
     >

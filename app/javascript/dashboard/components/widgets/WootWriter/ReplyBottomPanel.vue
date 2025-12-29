@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 import FileUpload from 'vue-upload-component';
 import * as ActiveStorage from 'activestorage';
 import inboxMixin from 'shared/mixins/inboxMixin';
@@ -133,6 +134,7 @@ export default {
   setup() {
     const { setSignatureFlagForInbox, fetchSignatureFlagFromUISettings } =
       useUISettings();
+    const { showAdvancedFeatures } = useAdvancedFeatures();
 
     const uploadRef = ref(false);
 
@@ -157,6 +159,7 @@ export default {
     return {
       setSignatureFlagForInbox,
       fetchSignatureFlagFromUISettings,
+      showAdvancedFeatures,
       uploadRef,
     };
   },
@@ -330,7 +333,7 @@ export default {
         @click="toggleAudioRecorderPlayPause"
       />
       <NextButton
-        v-if="showMessageSignatureButton"
+        v-if="showMessageSignatureButton && showAdvancedFeatures"
         v-tooltip.top-end="signatureToggleTooltip"
         icon="i-ph-signature"
         slate
@@ -371,7 +374,7 @@ export default {
         :conversation-id="conversationId"
       />
       <AIAssistanceButton
-        v-if="!isFetchingAppIntegrations"
+        v-if="!isFetchingAppIntegrations && showAdvancedFeatures"
         :conversation-id="conversationId"
         :is-private-note="isOnPrivateNote"
         :message="message"

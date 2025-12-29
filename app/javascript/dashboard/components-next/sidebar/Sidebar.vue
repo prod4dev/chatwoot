@@ -648,7 +648,11 @@ const filteredMenuItems = computed(() => {
             {{ searchShortcut }}
           </span>
         </RouterLink>
-        <ComposeConversation align-position="right" @close="onComposeClose">
+        <ComposeConversation
+          v-if="showAdvancedFeatures"
+          align-position="right"
+          @close="onComposeClose"
+        >
           <template #trigger="{ toggle }">
             <Button
               icon="i-lucide-pen-line"
@@ -676,7 +680,7 @@ const filteredMenuItems = computed(() => {
       <div
         class="pointer-events-none absolute inset-x-0 -top-[31px] h-8 bg-gradient-to-t from-n-solid-2 to-transparent"
       />
-      <YearInReviewBanner />
+      <YearInReviewBanner v-if="showAdvancedFeatures" />
       <SidebarChangelogCard
         v-if="isOnChatwootCloud && !isACustomBrandedInstance"
       />
