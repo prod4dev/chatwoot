@@ -11,6 +11,7 @@ import { useSidebarKeyboardShortcuts } from './useSidebarKeyboardShortcuts';
 import { vOnClickOutside } from '@vueuse/components';
 import { emitter } from 'shared/helpers/mitt';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 import Button from 'dashboard/components-next/button/Button.vue';
 import SidebarGroup from './SidebarGroup.vue';
@@ -44,6 +45,8 @@ const { t } = useI18n();
 const isACustomBrandedInstance = useMapGetter(
   'globalConfig/isACustomBrandedInstance'
 );
+
+const { showAdvancedFeatures } = useAdvancedFeatures();
 
 const toggleShortcutModalFn = show => {
   if (show) {
@@ -593,6 +596,16 @@ const menuItems = computed(() => {
     },
   ];
 });
+
+const filteredMenuItems = computed(() => {
+  const hiddenItems = ['Captain', 'Contacts', 'Reports', 'Campaigns', 'Portals', 'Settings'];
+
+  if (showAdvancedFeatures.value) {
+    return menuItems.value;
+  }
+
+  return menuItems.value.filter(item => !hiddenItems.includes(item.name));
+});
 </script>
 
 <template>
@@ -651,7 +664,7 @@ const menuItems = computed(() => {
     <nav class="grid overflow-y-scroll flex-grow gap-2 px-2 pb-5 no-scrollbar">
       <ul class="flex flex-col gap-1.5 m-0 list-none">
         <SidebarGroup
-          v-for="item in menuItems"
+          v-for="item in filteredMenuItems"
           :key="item.name"
           v-bind="item"
         />
