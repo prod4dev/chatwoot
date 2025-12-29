@@ -4,6 +4,7 @@ import Auth from 'dashboard/api/auth';
 import { useMapGetter } from 'dashboard/composables/store';
 import { useI18n } from 'vue-i18n';
 import { useUISettings } from 'dashboard/composables/useUISettings';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 import Avatar from 'next/avatar/Avatar.vue';
 import SidebarProfileMenuStatus from './SidebarProfileMenuStatus.vue';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
@@ -25,6 +26,7 @@ defineOptions({
 
 const { t } = useI18n();
 const { uiSettings } = useUISettings();
+const { showAdvancedFeatures } = useAdvancedFeatures();
 
 const currentUser = useMapGetter('getCurrentUser');
 const currentUserAvailability = useMapGetter('getCurrentUserAvailability');
@@ -69,7 +71,7 @@ const showChatSupport = computed(() => {
 const menuItems = computed(() => {
   return [
     {
-      show: showYearInReviewMenuItem.value,
+      show: showYearInReviewMenuItem.value && showAdvancedFeatures.value,
       showOnCustomBrandedInstance: false,
       label: t('SIDEBAR_ITEMS.YEAR_IN_REVIEW'),
       icon: 'i-lucide-gift',
@@ -85,7 +87,7 @@ const menuItems = computed(() => {
       },
     },
     {
-      show: true,
+      show: showAdvancedFeatures.value,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.KEYBOARD_SHORTCUTS'),
       icon: 'i-lucide-keyboard',
@@ -111,7 +113,7 @@ const menuItems = computed(() => {
       },
     },
     {
-      show: true,
+      show: showAdvancedFeatures.value,
       showOnCustomBrandedInstance: false,
       label: t('SIDEBAR_ITEMS.DOCS'),
       icon: 'i-lucide-book',
@@ -120,7 +122,7 @@ const menuItems = computed(() => {
       target: '_blank',
     },
     {
-      show: true,
+      show: showAdvancedFeatures.value,
       showOnCustomBrandedInstance: false,
       label: t('SIDEBAR_ITEMS.CHANGELOG'),
       icon: 'i-lucide-scroll-text',
