@@ -14,6 +14,7 @@ import {
 import MenuItem from '../../../components/widgets/conversation/contextMenu/menuItem.vue';
 import { useTrack } from 'dashboard/composables';
 import NextButton from 'dashboard/components-next/button/Button.vue';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 export default {
   components: {
@@ -47,9 +48,11 @@ export default {
   emits: ['open', 'close', 'replyTo'],
   setup() {
     const { getPlainText } = useMessageFormatter();
+    const { showAdvancedFeatures } = useAdvancedFeatures();
 
     return {
       getPlainText,
+      showAdvancedFeatures,
     };
   },
   data() {
@@ -213,7 +216,7 @@ export default {
           @click.stop="handleCopy"
         />
         <MenuItem
-          v-if="enabledOptions['translate']"
+          v-if="enabledOptions['translate'] && showAdvancedFeatures"
           :option="{
             icon: 'translate',
             label: $t('CONVERSATION.CONTEXT_MENU.TRANSLATE'),

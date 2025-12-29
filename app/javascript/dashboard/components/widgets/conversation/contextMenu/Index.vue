@@ -11,6 +11,7 @@ import MenuItem from './menuItem.vue';
 import MenuItemWithSubmenu from './menuItemWithSubmenu.vue';
 import wootConstants from 'dashboard/constants/globals';
 import AgentLoadingPlaceholder from './agentLoadingPlaceholder.vue';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 const MENU = {
   MARK_AS_READ: 'mark-as-read',
@@ -75,8 +76,10 @@ export default {
   ],
   setup() {
     const { isAdmin } = useAdmin();
+    const { showAdvancedFeatures } = useAdvancedFeatures();
     return {
       isAdmin,
+      showAdvancedFeatures,
     };
   },
   data() {
@@ -296,7 +299,7 @@ export default {
     <template v-if="isAllowed([MENU.STATUS, MENU.SNOOZE])">
       <template v-for="option in statusMenuConfig">
         <MenuItem
-          v-if="show(option.key) && isAllowed([MENU.STATUS])"
+          v-if="show(option.key) && isAllowed([MENU.STATUS]) && (option.key !== STATUS_TYPE.PENDING || showAdvancedFeatures)"
           :key="option.key"
           :option="option"
           variant="icon"
@@ -304,7 +307,7 @@ export default {
         />
       </template>
       <MenuItem
-        v-if="showSnooze && isAllowed([MENU.SNOOZE])"
+        v-if="showSnooze && isAllowed([MENU.SNOOZE]) && showAdvancedFeatures"
         :option="snoozeOption"
         variant="icon"
         @click.stop="snoozeConversation()"
@@ -315,7 +318,7 @@ export default {
       v-if="isAllowed([MENU.PRIORITY, MENU.LABEL, MENU.AGENT, MENU.TEAM])"
     >
       <MenuItemWithSubmenu
-        v-if="isAllowed([MENU.PRIORITY])"
+        v-if="isAllowed([MENU.PRIORITY]) && showAdvancedFeatures"
         :option="priorityConfig"
       >
         <MenuItem
@@ -382,7 +385,7 @@ export default {
         @click.stop="copyConversationLink"
       />
     </template>
-    <template v-if="isAdmin && isAllowed([MENU.DELETE])">
+    <template v-if="isAdmin && isAllowed([MENU.DELETE]) && showAdvancedFeatures">
       <hr class="m-1 rounded border-b border-n-weak dark:border-n-weak" />
       <MenuItem
         :option="deleteOption"
