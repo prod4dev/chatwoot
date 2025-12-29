@@ -6,6 +6,7 @@ import { CMD_SNOOZE_NOTIFICATION } from 'dashboard/helper/commandbar/events';
 import wootConstants from 'dashboard/constants/globals';
 import { findSnoozeTime } from 'dashboard/helper/snoozeHelpers';
 import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 import PaginationButton from './PaginationButton.vue';
 import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
 import { emitter } from 'shared/helpers/mitt';
@@ -34,6 +35,12 @@ export default {
     },
   },
   emits: ['next', 'prev'],
+  setup() {
+    const { showAdvancedFeatures } = useAdvancedFeatures();
+    return {
+      showAdvancedFeatures,
+    };
+  },
   data() {
     return { showCustomSnoozeModal: false };
   },
@@ -125,7 +132,7 @@ export default {
         @prev="onClickPrev"
       />
     </div>
-    <div class="flex items-center gap-2">
+    <div v-if="showAdvancedFeatures" class="flex items-center gap-2">
       <NextButton
         :label="$t('INBOX.ACTION_HEADER.SNOOZE')"
         icon="i-lucide-bell-minus"

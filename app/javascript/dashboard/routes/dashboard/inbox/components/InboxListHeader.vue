@@ -1,6 +1,7 @@
 <script>
 import { useAlert, useTrack } from 'dashboard/composables';
 import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 import NextButton from 'dashboard/components-next/button/Button.vue';
 import InboxOptionMenu from './InboxOptionMenu.vue';
@@ -19,6 +20,12 @@ export default {
     },
   },
   emits: ['redirect', 'filter'],
+  setup() {
+    const { showAdvancedFeatures } = useAdvancedFeatures();
+    return {
+      showAdvancedFeatures,
+    };
+  },
   data() {
     return {
       showInboxDisplayMenu: false,
@@ -102,7 +109,7 @@ export default {
         />
       </div>
     </div>
-    <div class="relative flex items-center gap-1">
+    <div v-if="showAdvancedFeatures" class="relative flex items-center gap-1">
       <NextButton
         icon="i-lucide-sliders-vertical"
         slate
