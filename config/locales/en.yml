@@ -220,7 +220,7 @@ en:
       agent_bot:
         error_moved_to_open: 'Conversation was marked open by system due to an error with the agent bot.'
       status:
-        resolved: 'Conversation was marked resolved by %{user_name}'
+        resolved: 'Conversation was marked as resolved by %{user_name}. From this point forward, it will operate in automatic mode'
         contact_resolved: 'Conversation was resolved by %{contact_name}'
         open: 'Conversation was reopened by %{user_name}'
         pending: 'Conversation was marked as pending by %{user_name}'

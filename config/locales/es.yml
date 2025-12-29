@@ -204,7 +204,7 @@ es:
       agent_bot:
         error_moved_to_open: 'Conversation was marked open by system due to an error with the agent bot.'
       status:
-        resolved: 'La conversación fue marcada por %{user_name}'
+        resolved: 'La conversación fue marcada como resuelta por %{user_name}. A partir de este momento, operará en modo automático'
         contact_resolved: 'Conversación fue resuelta por %{contact_name}'
         open: 'La conversación fue reabierta por %{user_name}'
         pending: 'La conversación fue marcada como pendiente por %{user_name}'
