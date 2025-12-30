@@ -1,32 +1,26 @@
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 
-export function useAdvancedFeatures() {
-  const showAdvancedFeatures = ref(false);
+// Global shared state
+const showAdvancedFeatures = ref(
+  typeof document !== 'undefined'
+    ? document.body.classList.contains('show-advanced-features')
+    : false
+);
 
+// Set up observer once globally
+if (typeof window !== 'undefined') {
   const checkAdvancedFeatures = () => {
     showAdvancedFeatures.value = document.body.classList.contains('show-advanced-features');
   };
 
-  onMounted(() => {
-    checkAdvancedFeatures();
-
-    // Watch for class changes on body
-    const observer = new MutationObserver(checkAdvancedFeatures);
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    // Store observer for cleanup
-    window._advancedFeaturesObserver = observer;
+  const observer = new MutationObserver(checkAdvancedFeatures);
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class'],
   });
+}
 
-  onUnmounted(() => {
-    if (window._advancedFeaturesObserver) {
-      window._advancedFeaturesObserver.disconnect();
-    }
-  });
-
+export function useAdvancedFeatures() {
   return {
     showAdvancedFeatures,
   };
