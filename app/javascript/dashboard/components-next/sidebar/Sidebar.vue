@@ -623,8 +623,8 @@ const filteredMenuItems = computed(() => {
       },
     ]"
   >
-    <section class="grid gap-2 mt-2 mb-4">
-      <div class="flex gap-2 items-center px-2 min-w-0">
+    <section class="grid gap-2 mt-4 mb-6">
+      <div class="flex gap-2 items-center px-2 min-w-0 py-2">
         <div class="grid flex-shrink-0 place-content-center w-full">
           <Logo class="w-full h-8" />
         </div>
