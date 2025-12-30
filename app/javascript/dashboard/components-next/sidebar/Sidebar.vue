@@ -615,7 +615,7 @@ const filteredMenuItems = computed(() => {
       closeMobileSidebar,
       { ignore: ['#mobile-sidebar-launcher'] },
     ]"
-    class="bg-n-solid-2 rtl:border-l ltr:border-r border-n-weak flex flex-col text-sm pb-1 fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 transition-transform duration-200 ease-in-out md:static w-[200px] basis-[200px] md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:-translate-x-0"
+    class="bg-[#0066ff] rtl:border-l ltr:border-r border-white/20 flex flex-col text-sm pb-1 fixed top-0 ltr:left-0 rtl:right-0 h-full z-40 transition-transform duration-200 ease-in-out md:static w-[200px] basis-[200px] md:flex-shrink-0 md:ltr:translate-x-0 md:rtl:-translate-x-0"
     :class="[
       {
         'shadow-lg md:shadow-none': isMobileSidebarOpen,
@@ -625,10 +625,10 @@ const filteredMenuItems = computed(() => {
   >
     <section class="grid gap-2 mt-2 mb-4">
       <div class="flex gap-2 items-center px-2 min-w-0">
-        <div class="grid flex-shrink-0 place-content-center size-6">
-          <Logo class="size-4" />
+        <div class="grid flex-shrink-0 place-content-center w-full">
+          <Logo class="w-full h-8" />
         </div>
-        <div class="flex-shrink-0 w-px h-3 bg-n-strong" />
+        <div class="flex-shrink-0 w-px h-3 bg-white/20" />
         <SidebarAccountSwitcher
           class="flex-grow -mx-1 min-w-0"
           @show-create-account-modal="emit('showCreateAccountModal')"
@@ -637,14 +637,14 @@ const filteredMenuItems = computed(() => {
       <div class="flex gap-2 px-2">
         <RouterLink
           :to="{ name: 'search' }"
-          class="flex gap-2 items-center px-2 py-1 w-full h-7 rounded-lg outline outline-1 outline-n-weak bg-n-solid-3 dark:bg-n-black/30"
+          class="flex gap-2 items-center px-2 py-1 w-full h-7 rounded-lg outline outline-1 outline-white/20 bg-white/10 text-white"
         >
-          <span class="flex-shrink-0 i-lucide-search size-4 text-n-slate-11" />
-          <span class="flex-grow text-left">
+          <span class="flex-shrink-0 i-lucide-search size-4 text-white/70" />
+          <span class="flex-grow text-left text-white/70">
             {{ t('COMBOBOX.SEARCH_PLACEHOLDER') }}
           </span>
           <span
-            class="hidden tracking-wide pointer-events-none select-none text-n-slate-10"
+            class="hidden tracking-wide pointer-events-none select-none text-white/50"
           >
             {{ searchShortcut }}
           </span>
@@ -659,7 +659,7 @@ const filteredMenuItems = computed(() => {
               icon="i-lucide-pen-line"
               color="slate"
               size="sm"
-              class="!h-7 !bg-n-solid-3 dark:!bg-n-black/30 !outline-n-weak !text-n-slate-11"
+              class="!h-7 !bg-white/10 !outline-white/20 !text-white"
               @click="onComposeOpen(toggle)"
             />
           </template>
@@ -679,14 +679,14 @@ const filteredMenuItems = computed(() => {
       class="flex flex-col flex-shrink-0 relative gap-1 justify-between items-center"
     >
       <div
-        class="pointer-events-none absolute inset-x-0 -top-[31px] h-8 bg-gradient-to-t from-n-solid-2 to-transparent"
+        class="pointer-events-none absolute inset-x-0 -top-[31px] h-8 bg-gradient-to-t from-[#0066ff] to-transparent"
       />
       <YearInReviewBanner v-if="showAdvancedFeatures" />
       <SidebarChangelogCard
         v-if="isOnChatwootCloud && !isACustomBrandedInstance"
       />
       <div
-        class="p-1 flex-shrink-0 flex w-full justify-between z-10 gap-2 items-center border-t border-n-weak shadow-[0px_-2px_4px_0px_rgba(27,28,29,0.02)]"
+        class="p-1 flex-shrink-0 flex w-full justify-between z-10 gap-2 items-center border-t border-white/20"
       >
         <SidebarProfileMenu
           @open-key-shortcut-modal="emit('openKeyShortcutModal')"

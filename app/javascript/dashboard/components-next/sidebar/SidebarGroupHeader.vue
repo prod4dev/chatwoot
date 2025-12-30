@@ -32,9 +32,9 @@ const count = computed(() =>
     :to="to"
     :title="label"
     :class="{
-      'text-n-blue-text bg-n-alpha-2 font-medium': isActive && !hasActiveChild,
-      'text-n-slate-12 font-medium': hasActiveChild,
-      'text-n-slate-11 hover:bg-n-alpha-2': !isActive && !hasActiveChild,
+      'text-white bg-white/20 font-medium': isActive && !hasActiveChild,
+      'text-white font-medium': hasActiveChild,
+      'text-white/90 hover:bg-white/10': !isActive && !hasActiveChild,
     }"
     @click.stop="emit('toggle')"
   >
@@ -42,7 +42,7 @@ const count = computed(() =>
       <Icon v-if="icon" :icon="icon" class="size-4" />
       <span
         v-if="showBadge"
-        class="size-2 -top-px ltr:-right-px rtl:-left-px bg-n-brand absolute rounded-full border border-n-solid-2"
+        class="size-2 -top-px ltr:-right-px rtl:-left-px bg-white absolute rounded-full border border-[#0066ff]"
       />
     </div>
     <div class="flex items-center gap-1.5 flex-grow min-w-0">
@@ -53,8 +53,8 @@ const count = computed(() =>
         v-if="dynamicCount && !expandable"
         class="rounded-md capitalize text-xs leading-5 font-medium text-center outline outline-1 px-1 flex-shrink-0"
         :class="{
-          'text-n-blue-text outline-n-slate-6': isActive,
-          'text-n-slate-11 outline-n-strong': !isActive,
+          'text-white outline-white/50': isActive,
+          'text-white/90 outline-white/30': !isActive,
         }"
       >
         {{ count }}
@@ -63,7 +63,7 @@ const count = computed(() =>
     <span
       v-if="expandable"
       v-show="isExpanded"
-      class="i-lucide-chevron-up size-3"
+      class="i-lucide-chevron-up size-3 text-white"
       @click.stop="emit('toggle')"
     />
   </component>

@@ -52,15 +52,15 @@ const emitNewAccount = () => {
         aria-controls="account-options"
         class="flex items-center gap-2 justify-between w-full rounded-lg px-2"
         :class="[
-          isOpen && 'bg-n-alpha-1',
+          isOpen && 'bg-white/10',
           showAccountSwitcher
-            ? 'hover:bg-n-alpha-1 cursor-pointer'
+            ? 'hover:bg-white/10 cursor-pointer'
             : 'cursor-default',
         ]"
         @click="() => showAccountSwitcher && toggle()"
       >
         <span
-          class="text-sm font-medium leading-5 text-n-slate-12 truncate"
+          class="text-sm font-medium leading-5 text-white truncate"
           aria-live="polite"
         >
           {{ currentAccount.name }}
@@ -69,7 +69,7 @@ const emitNewAccount = () => {
         <span
           v-if="showAccountSwitcher"
           aria-hidden="true"
-          class="i-lucide-chevron-down size-4 text-n-slate-10 flex-shrink-0"
+          class="i-lucide-chevron-down size-4 text-white/70 flex-shrink-0"
         />
       </button>
     </template>
