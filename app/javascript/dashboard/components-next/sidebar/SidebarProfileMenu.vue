@@ -158,8 +158,8 @@ const allowedMenuItems = computed(() => {
   <DropdownContainer class="relative w-full min-w-0" @close="emit('close')">
     <template #trigger="{ toggle, isOpen }">
       <button
-        class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-n-alpha-1"
-        :class="{ 'bg-n-alpha-1': isOpen }"
+        class="flex gap-2 items-center p-1 w-full text-left rounded-lg cursor-pointer hover:bg-white/10"
+        :class="{ 'bg-white/10': isOpen }"
         @click="toggle"
       >
         <Avatar
@@ -171,10 +171,10 @@ const allowedMenuItems = computed(() => {
           rounded-full
         />
         <div class="min-w-0">
-          <div class="text-sm font-medium leading-4 truncate text-n-slate-12">
+          <div class="text-sm font-medium leading-4 truncate text-white">
             {{ currentUser.available_name }}
           </div>
-          <div class="text-xs truncate text-n-slate-11">
+          <div class="text-xs truncate text-white/70">
             {{ currentUser.email }}
           </div>
         </div>
