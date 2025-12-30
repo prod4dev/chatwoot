@@ -4,6 +4,7 @@ import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useFontSize } from 'dashboard/composables/useFontSize';
 import { useBranding } from 'shared/composables/useBranding';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 import { clearCookiesOnLogout } from 'dashboard/store/utils/api.js';
 import { copyTextToClipboard } from 'shared/helpers/clipboard';
 import { parseAPIErrorResponse } from 'dashboard/store/utils/api';
@@ -46,6 +47,7 @@ export default {
     const { isEditorHotKeyEnabled, updateUISettings } = useUISettings();
     const { currentFontSize, updateFontSize } = useFontSize();
     const { replaceInstallationName } = useBranding();
+    const { showAdvancedFeatures } = useAdvancedFeatures();
 
     return {
       currentFontSize,
@@ -53,6 +55,7 @@ export default {
       isEditorHotKeyEnabled,
       updateUISettings,
       replaceInstallationName,
+      showAdvancedFeatures,
     };
   },
   data() {
@@ -246,6 +249,7 @@ export default {
       />
     </FormSection>
     <FormSection
+      v-if="showAdvancedFeatures"
       :title="$t('PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.TITLE')"
       :description="$t('PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.NOTE')"
     >
@@ -306,12 +310,13 @@ export default {
         <AudioNotifications />
       </FormSection>
     </Policy>
-    <Policy :permissions="notificationPermissions">
+    <Policy v-if="showAdvancedFeatures" :permissions="notificationPermissions">
       <FormSection :title="$t('PROFILE_SETTINGS.FORM.NOTIFICATIONS.TITLE')">
         <NotificationPreferences />
       </FormSection>
     </Policy>
     <FormSection
+      v-if="showAdvancedFeatures"
       :title="$t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.TITLE')"
       :description="
         replaceInstallationName($t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.NOTE'))
