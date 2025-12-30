@@ -598,14 +598,13 @@ const menuItems = computed(() => {
 });
 
 const filteredMenuItems = computed(() => {
-  const hiddenItems = ['Captain', 'Contacts', 'Reports', 'Campaigns', 'Portals', 'Settings'];
-  const alwaysHidden = ['Conversation'];
+  const hiddenItems = ['Conversation', 'Captain', 'Contacts', 'Reports', 'Campaigns', 'Portals', 'Settings'];
 
   if (showAdvancedFeatures.value) {
-    return menuItems.value.filter(item => !alwaysHidden.includes(item.name));
+    return menuItems.value;
   }
 
-  return menuItems.value.filter(item => !hiddenItems.includes(item.name) && !alwaysHidden.includes(item.name));
+  return menuItems.value.filter(item => !hiddenItems.includes(item.name));
 });
 </script>
 
