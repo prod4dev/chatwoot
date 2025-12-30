@@ -1,7 +1,7 @@
 {
   "INBOX": {
     "LIST": {
-      "TITLE": "My Inbox",
+      "TITLE": "Mi Inbox",
       "DISPLAY_DROPDOWN": "Mostrar",
       "LOADING": "Cargando notificaciones",
       "404": "No hay notificaciones activas en este grupo.",

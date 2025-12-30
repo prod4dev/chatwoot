@@ -504,7 +504,7 @@
     },
     "AGENT_STATUS": {
       "HEADER": "Estado del agente",
-      "ONLINE": "En línea",
+      "ONLINE": "Online",
       "BUSY": "Ocupado",
       "OFFLINE": "Fuera de línea"
     }
