@@ -36,28 +36,28 @@
         }
       },
       "INTERFACE_SECTION": {
-        "TITLE": "Interface",
-        "NOTE": "Customize the look and feel of your P4D Inbox dashboard.",
+        "TITLE": "Interfaz",
+        "NOTE": "Personaliza la apariencia de tu panel de P4D Inbox.",
         "FONT_SIZE": {
-          "TITLE": "Font size",
-          "NOTE": "Adjust the text size across the dashboard based on your preference.",
-          "UPDATE_SUCCESS": "Your font settings have been updated successfully",
-          "UPDATE_ERROR": "There is an error while updating the font settings, please try again",
+          "TITLE": "Tamaño de fuente",
+          "NOTE": "Ajusta el tamaño del texto en el panel según tu preferencia.",
+          "UPDATE_SUCCESS": "Tu configuración de fuente se ha actualizado correctamente",
+          "UPDATE_ERROR": "Hubo un error al actualizar la configuración de fuente, intenta de nuevo",
           "OPTIONS": {
-            "SMALLER": "Smaller",
-            "SMALL": "Small",
+            "SMALLER": "Más pequeño",
+            "SMALL": "Pequeño",
             "DEFAULT": "Predeterminado",
-            "LARGE": "Large",
-            "LARGER": "Larger",
-            "EXTRA_LARGE": "Extra Large"
+            "LARGE": "Grande",
+            "LARGER": "Más grande",
+            "EXTRA_LARGE": "Extra grande"
           }
         },
         "LANGUAGE": {
-          "TITLE": "Preferred Language",
-          "NOTE": "Choose the language you want to use.",
-          "UPDATE_SUCCESS": "Your Language settings have been updated successfully",
-          "UPDATE_ERROR": "There is an error while updating the language settings, please try again",
-          "USE_ACCOUNT_DEFAULT": "Use account default"
+          "TITLE": "Idioma preferido",
+          "NOTE": "Elige el idioma que quieres usar.",
+          "UPDATE_SUCCESS": "Tu configuración de idioma se ha actualizado correctamente",
+          "UPDATE_ERROR": "Hubo un error al actualizar la configuración de idioma, intenta de nuevo",
+          "USE_ACCOUNT_DEFAULT": "Usar valor predeterminado de la cuenta"
         }
       },
       "MESSAGE_SIGNATURE_SECTION": {

@@ -234,6 +234,7 @@ export default {
       "
     >
       <FontSize
+        v-if="showAdvancedFeatures"
         :value="currentFontSize"
         :label="$t('PROFILE_SETTINGS.FORM.INTERFACE_SECTION.FONT_SIZE.TITLE')"
         :description="
