@@ -183,7 +183,7 @@
       "MESSAGE_SIGN_TOOLTIP": "Firma del mensaje",
       "ENABLE_SIGN_TOOLTIP": "Activar firma",
       "DISABLE_SIGN_TOOLTIP": "Desactivar firma",
-      "MSG_INPUT": "Shift + enter for new line. Comience con '/' para seleccionar una respuesta predefinida.",
+      "MSG_INPUT": "Mayús + enter para nueva línea. Comience con '/' para seleccionar una respuesta predefinida.",
       "PRIVATE_MSG_INPUT": "Mayús + entrar para una nueva línea. Esto será visible sólo para los agentes",
       "MESSAGE_SIGNATURE_NOT_CONFIGURED": "La firma del mensaje no está configurada, por favor configúrela en la configuración del perfil.",
       "CLICK_HERE": "Haga clic aquí para actualizar",
