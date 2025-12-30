@@ -11,7 +11,6 @@ const globalConfig = useMapGetter('globalConfig/get');
     v-if="globalConfig.logoThumbnail"
     v-bind="attrs"
     :src="globalConfig.logoThumbnail"
-    class="brightness-0 invert"
   />
   <svg
     v-else
