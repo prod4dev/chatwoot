@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n';
 import { useStore, useStoreGetters } from 'dashboard/composables/store';
 import { useEmitter } from 'dashboard/composables/emitter';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 import WootDropdownItem from 'shared/components/ui/dropdown/DropdownItem.vue';
 import WootDropdownMenu from 'shared/components/ui/dropdown/DropdownMenu.vue';
@@ -21,6 +22,7 @@ import Button from 'dashboard/components-next/button/Button.vue';
 const store = useStore();
 const getters = useStoreGetters();
 const { t } = useI18n();
+const { showAdvancedFeatures } = useAdvancedFeatures();
 
 const arrowDownButtonRef = ref(null);
 const isLoading = ref(false);
@@ -186,7 +188,7 @@ useEmitter(CMD_RESOLVE_CONVERSATION, onCmdResolveConversation);
       class="border rounded-lg shadow-lg border-n-strong dark:border-n-strong box-content p-2 w-fit z-10 bg-n-alpha-3 backdrop-blur-[100px] absolute block left-auto top-full mt-0.5 start-0 xl:start-auto xl:end-0 max-w-[12.5rem] min-w-[9.75rem] [&_ul>li]:mb-0"
     >
       <WootDropdownMenu class="mb-0">
-        <WootDropdownItem v-if="!isPending">
+        <WootDropdownItem v-if="!isPending && showAdvancedFeatures">
           <Button
             :label="t('CONVERSATION.RESOLVE_DROPDOWN.SNOOZE_UNTIL')"
             ghost
@@ -198,7 +200,7 @@ useEmitter(CMD_RESOLVE_CONVERSATION, onCmdResolveConversation);
             @click="() => openSnoozeModal()"
           />
         </WootDropdownItem>
-        <WootDropdownItem v-if="!isPending">
+        <WootDropdownItem v-if="!isPending && showAdvancedFeatures">
           <Button
             :label="t('CONVERSATION.RESOLVE_DROPDOWN.MARK_PENDING')"
             ghost
