@@ -8,6 +8,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { SESSION_STORAGE_KEYS } from 'dashboard/constants/sessionStorage';
 import SessionStorage from 'shared/helpers/sessionStorage';
 import { useBranding } from 'shared/composables/useBranding';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 // components
 import SimpleDivider from '../../components/Divider/SimpleDivider.vue';
@@ -47,8 +48,10 @@ export default {
   },
   setup() {
     const { replaceInstallationName } = useBranding();
+    const { showAdvancedFeatures } = useAdvancedFeatures();
     return {
       replaceInstallationName,
+      showAdvancedFeatures,
       v$: useVuelidate(),
     };
   },
@@ -230,10 +233,10 @@ export default {
         :alt="globalConfig.installationName"
         class="w-auto h-8 mx-auto"
       />
-      <h2 class="mt-6 text-3xl font-medium text-center text-n-slate-12">
+      <h2 v-if="showAdvancedFeatures" class="mt-6 text-3xl font-medium text-center text-n-slate-12">
         {{ replaceInstallationName($t('LOGIN.TITLE')) }}
       </h2>
-      <p v-if="false" class="mt-3 text-sm text-center text-n-slate-11">
+      <p v-if="showAdvancedFeatures" class="mt-3 text-sm text-center text-n-slate-11">
         {{ $t('COMMON.OR') }}
         <router-link to="auth/signup" class="lowercase text-link text-n-brand">
           {{ $t('LOGIN.CREATE_NEW_ACCOUNT') }}
