@@ -160,7 +160,7 @@ export default {
   <div class="context-menu">
     <!-- Add To Canned Responses -->
     <woot-modal
-      v-if="isCannedResponseModalOpen && enabledOptions['cannedResponse']"
+      v-if="isCannedResponseModalOpen && enabledOptions['cannedResponse'] && showAdvancedFeatures"
       v-model:show="isCannedResponseModalOpen"
       :on-close="hideCannedResponseModal"
     >
@@ -171,7 +171,7 @@ export default {
     </woot-modal>
     <!-- Confirm Deletion -->
     <woot-delete-modal
-      v-if="showDeleteModal && enabledOptions['delete']"
+      v-if="showDeleteModal && enabledOptions['delete'] && showAdvancedFeatures"
       v-model:show="showDeleteModal"
       class="context-menu--delete-modal"
       :on-close="closeDeleteModal"
@@ -226,7 +226,7 @@ export default {
         />
         <hr />
         <MenuItem
-          v-if="enabledOptions['copyLink']"
+          v-if="enabledOptions['copyLink'] && showAdvancedFeatures"
           :option="{
             icon: 'link',
             label: $t('CONVERSATION.CONTEXT_MENU.COPY_PERMALINK'),
@@ -235,7 +235,7 @@ export default {
           @click.stop="copyLinkToMessage"
         />
         <MenuItem
-          v-if="enabledOptions['cannedResponse']"
+          v-if="enabledOptions['cannedResponse'] && showAdvancedFeatures"
           :option="{
             icon: 'comment-add',
             label: $t('CONVERSATION.CONTEXT_MENU.CREATE_A_CANNED_RESPONSE'),
@@ -243,9 +243,9 @@ export default {
           variant="icon"
           @click.stop="showCannedResponseModal"
         />
-        <hr v-if="enabledOptions['delete']" />
+        <hr v-if="enabledOptions['delete'] && showAdvancedFeatures" />
         <MenuItem
-          v-if="enabledOptions['delete']"
+          v-if="enabledOptions['delete'] && showAdvancedFeatures"
           :option="{
             icon: 'delete',
             label: $t('CONVERSATION.CONTEXT_MENU.DELETE'),

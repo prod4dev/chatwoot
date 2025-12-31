@@ -47,7 +47,7 @@ const isSnoozed = computed(
 );
 
 const showAdditionalActions = computed(
-  () => !isPending.value && !isSnoozed.value
+  () => !isPending.value && !isSnoozed.value && showAdvancedFeatures.value
 );
 
 const showOpenButton = computed(() => {
