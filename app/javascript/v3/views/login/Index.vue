@@ -17,6 +17,7 @@ import Spinner from 'shared/components/Spinner.vue';
 import Icon from 'dashboard/components-next/icon/Icon.vue';
 import NextButton from 'dashboard/components-next/button/Button.vue';
 import MfaVerification from 'dashboard/components/auth/MfaVerification.vue';
+import P4DLogo from '../../../assets/images/p4d-logo-login.svg';
 
 const ERROR_MESSAGES = {
   'no-account-found': 'LOGIN.OAUTH.NO_ACCOUNT_FOUND',
@@ -55,6 +56,7 @@ export default {
     return {
       // We need to initialize the component with any
       // properties that will be used in it
+      P4DLogo,
       credentials: {
         email: '',
         password: '',
@@ -224,7 +226,7 @@ export default {
   >
     <section class="max-w-5xl mx-auto">
       <img
-        src="/p4d-logo-login.svg"
+        :src="P4DLogo"
         :alt="globalConfig.installationName"
         class="w-auto h-8 mx-auto"
       />
