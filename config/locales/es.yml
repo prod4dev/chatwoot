@@ -218,8 +218,8 @@ es:
         updated: '%{user_name} cambió la prioridad de %{old_priority} a %{new_priority}'
         removed: '%{user_name} eliminó la prioridad'
       assignee:
-        self_assigned: '%{user_name} auto-asignado a esta conversación'
-        assigned: 'Asignado a %{assignee_name} por %{user_name}'
+        self_assigned: 'Asignado a %{user_name}'
+        assigned: 'Asignado a %{assignee_name}'
         removed: 'Conversación no asignada por %{user_name}'
       team:
         assigned: 'Asignado a %{team_name} por %{user_name}'
