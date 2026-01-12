@@ -9,6 +9,7 @@ import {
 import { LocalStorage } from 'shared/helpers/localStorage';
 import { LOCAL_STORAGE_KEYS } from 'dashboard/constants/localStorage';
 import { setColorTheme } from 'dashboard/helper/themeHelper.js';
+import { useAdvancedFeatures } from 'dashboard/composables/useAdvancedFeatures';
 
 const getThemeOptions = t => [
   {
@@ -38,10 +39,15 @@ const setAppearance = theme => {
 
 export function useAppearanceHotKeys() {
   const { t } = useI18n();
+  const { showAdvancedFeatures } = useAdvancedFeatures();
 
   const themeOptions = computed(() => getThemeOptions(t));
 
   const goToAppearanceHotKeys = computed(() => {
+    if (!showAdvancedFeatures.value) {
+      return [];
+    }
+
     const options = themeOptions.value.map(theme => ({
       id: theme.key,
       title: theme.label,
