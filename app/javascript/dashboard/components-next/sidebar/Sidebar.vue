@@ -598,7 +598,15 @@ const menuItems = computed(() => {
 });
 
 const filteredMenuItems = computed(() => {
-  const hiddenItems = ['Conversation', 'Captain', 'Contacts', 'Reports', 'Campaigns', 'Portals', 'Settings'];
+  const hiddenItems = [
+    'Conversation',
+    'Captain',
+    'Contacts',
+    'Reports',
+    'Campaigns',
+    'Portals',
+    'Settings',
+  ];
 
   if (showAdvancedFeatures.value) {
     return menuItems.value;
@@ -685,6 +693,7 @@ const filteredMenuItems = computed(() => {
         v-if="isOnChatwootCloud && !isACustomBrandedInstance"
       />
       <div
+        v-if="showAdvancedFeatures"
         class="p-1 flex-shrink-0 flex w-full justify-between z-10 gap-2 items-center border-t border-white/20"
       >
         <SidebarProfileMenu
