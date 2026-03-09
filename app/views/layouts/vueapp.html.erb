@@ -5,13 +5,10 @@
       P4D Inbox
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0"/>
-    <% if @global_config['DISPLAY_MANIFEST'] %>
-      <meta name="theme-color" content="#1f93ff">
-      <meta name="description" content="<%= @global_config['INSTALLATION_NAME'] %> is a customer support solution that helps companies engage customers over Messenger, Twitter, Telegram, WeChat, Whatsapp. Simply connect your channels and converse with your customers from a single place.">
-      <link class="favicon" rel="icon" type="image/x-icon" href="/favicon.ico">
-      <link class="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <% end %>
-    <link rel="icon" type="image/png" sizes="512x512" href="<%= @global_config['LOGO_THUMBNAIL'] %>">
+    <meta name="theme-color" content="#1f93ff">
+    <meta name="description" content="<%= @global_config['INSTALLATION_NAME'] %> is a customer support solution that helps companies engage customers over Messenger, Twitter, Telegram, WeChat, Whatsapp. Simply connect your channels and converse with your customers from a single place.">
+    <link class="favicon" rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link class="favicon" rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <%= csrf_meta_tags %>
     <script>
       window.chatwootConfig = {
