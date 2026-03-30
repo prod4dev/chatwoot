@@ -115,9 +115,13 @@ class WebhookListener < BaseListener
     end
   end
 
+  # Events that should not be sent to API inbox webhooks to avoid noise
+  EXCLUDED_API_WEBHOOK_EVENTS = %w[conversation_typing_on conversation_typing_off conversation_updated].freeze
+
   def deliver_api_inbox_webhooks(payload, inbox)
     return unless inbox.channel_type == 'Channel::Api'
     return if inbox.channel.webhook_url.blank?
+    return if EXCLUDED_API_WEBHOOK_EVENTS.include?(payload[:event])
 
     WebhookJob.perform_later(inbox.channel.webhook_url, payload, :api_inbox_webhook)
   end
